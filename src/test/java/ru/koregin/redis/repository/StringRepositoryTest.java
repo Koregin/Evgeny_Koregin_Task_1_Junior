@@ -1,12 +1,12 @@
 package ru.koregin.redis.repository;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertTrue;
 
 public class StringRepositoryTest {
 
@@ -53,9 +53,6 @@ public class StringRepositoryTest {
         repository.set(key3, value);
         List<String> first = List.of(key1, key2);
         List<String> second = repository.keys("H[ea]llo$");
-        assertTrue(first.size() == second.size()
-                && first.containsAll(second) && second.containsAll(first));
+        assertThat(second, containsInAnyOrder(first.toArray()));
     }
-
-
 }

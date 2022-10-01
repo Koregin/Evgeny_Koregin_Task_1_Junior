@@ -22,8 +22,8 @@ public class StringRepository {
         return dictionary.get(key);
     }
 
-    public List<String> keys(String string) {
-        Pattern pattern = Pattern.compile(string, Pattern.CASE_INSENSITIVE);
+    public List<String> keys(String keysPattern) {
+        Pattern pattern = Pattern.compile(keysPattern, Pattern.CASE_INSENSITIVE);
         List<String> keys = new ArrayList<>();
         for (String key : dictionary.keySet()) {
             Matcher matcher = pattern.matcher(key);
@@ -42,5 +42,9 @@ public class StringRepository {
             }
         }
         return counter;
+    }
+
+    public void clear() {
+        dictionary.clear();
     }
 }

@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "71e3d8b3-9cc0-4119-b01f-537f4e15d531",
+		"name": "Redis REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23648568"
+	},
+	"item": [
+		{
+			"name": "Create String Entry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"key\":\"power\",\n    \"value\":\"blue\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/string/SET",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"string",
+						"SET"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get string",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/string/GET/power",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"string",
+						"GET",
+						"power"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get keys",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/string/KEYS/pow",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"string",
+						"KEYS",
+						"pow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete entry",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"power\"]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/string/DEL",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"string",
+						"DEL"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear all data in String cache",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/string/CLEAR",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"string",
+						"CLEAR"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create map entry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"color\":\"red\",\n    \"power\":\"220\",\n    \"transmission\":\"auto\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/map/HSET/car",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"map",
+						"HSET",
+						"car"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get map value by key",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/map/HGET/car/transmission",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"map",
+						"HGET",
+						"car",
+						"transmission"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear all data from map",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/map/CLEAR",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"map",
+						"CLEAR"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Сreate List entry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"Hello\", \"world\"]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/list/LPUSH/word",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						"LPUSH",
+						"word"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create list entry",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"key\":\"word\",\n    \"index\":0,\n    \"value\":\"Crazy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/list/LSET",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						"LSET"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get enrty from list by key and index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/list/LGET/word/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						"LGET",
+						"word",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear all data in list",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/list/CLEAR",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						"CLEAR"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

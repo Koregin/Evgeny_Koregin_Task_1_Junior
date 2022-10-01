@@ -20,30 +20,34 @@ public class ListRepository {
         return list.get(key).size();
     }
 
-    public String lset(String key, int index, String element) {
-        if (list.containsKey(key)) {
-            if (index < list.get(key).size()) {
-                list.get(key).set(index, element);
-            } else {
-                throw new IndexOutOfBoundsException();
-            }
-        } else {
-            throw new IndexOutOfBoundsException();
-        }
-        return "OK";
-    }
-
     public String lget(String key, int index) {
         String result;
         if (list.containsKey(key)) {
             if (index < list.get(key).size()) {
                 result = list.get(key).get(index);
             } else {
-                throw new IndexOutOfBoundsException();
+                throw new IllegalArgumentException("Значение с индексом = " + index + " для ключа = " + key + " не найдено");
             }
         } else {
-            throw new IndexOutOfBoundsException();
+            throw new IllegalArgumentException("Ключ = " + key + " не найден");
         }
         return result;
+    }
+
+    public String lset(String key, int index, String element) {
+        if (list.containsKey(key)) {
+            if (index < list.get(key).size()) {
+                list.get(key).set(index, element);
+            } else {
+                throw new IllegalArgumentException("Значение с индексом = " + index + " для ключа = " + key + " не найдено");
+            }
+        } else {
+            throw new IllegalArgumentException("Ключ = " + key + " не найден");
+        }
+        return "OK";
+    }
+
+    public void clear() {
+        list.clear();
     }
 }
